@@ -436,7 +436,16 @@
     "Amanda", "Daniel", "Suelen", "Fábio", "Débora", "Cláudio"
   ];
 
+  const audio = new Audio("https://www.myinstants.com/media/sounds/pop-up-off.mp3");
+
+  let notificationCount = 0;
+  const maxNotifications = 5;
+
   function showNotification() {
+    if (notificationCount >= maxNotifications) {
+      return; // para depois de 5
+    }
+
     const name = names[Math.floor(Math.random() * names.length)];
     const people = Math.floor(Math.random() * 5) + 1;
     const message = `${name} e mais ${people} pessoas acabaram de baixar o UnitTV!`;
@@ -446,14 +455,23 @@
     notif.classList.add("opacity-100");
     notif.classList.remove("opacity-0");
 
+    // toca o som
+    audio.play();
+
     setTimeout(() => {
       notif.classList.remove("opacity-100");
       notif.classList.add("opacity-0");
+
+      notificationCount++;
+
+      // Chama novamente se ainda não chegou no limite
+      if (notificationCount < maxNotifications) {
+        setTimeout(showNotification, 2000); // espera 2s antes de exibir a próxima
+      }
     }, 5000);
   }
 
   showNotification();
-setInterval(showNotification, 5000);
 </script>
   
 <div class="hidden opacity-0 opacity-100"></div>
