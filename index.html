@@ -423,5 +423,38 @@
       observer.observe(el);
     });
   </script>
+  <div id="notification" class="fixed bottom-5 right-5 bg-gradient-to-r from-electric-purple to-electric-blue text-white px-4 py-3 rounded-lg shadow-lg opacity-0 pointer-events-none transition-all duration-500"></div>
+
+<script>
+  <script>
+  const names = [
+    "Ana", "João", "Marcos", "Beatriz", "Fernanda", "Carlos",
+    "Juliana", "Lucas", "Patrícia", "Felipe", "Camila", "Bruno",
+    "Larissa", "Ricardo", "Michele", "Eduardo", "Gabriela",
+    "André", "Vanessa", "Pedro", "Natália", "Thiago", "Renata",
+    "Leonardo", "Aline", "Vinícius", "Simone", "Rodrigo", "Paula",
+    "Sandra", "Igor", "Tatiane", "Diego", "Priscila", "Gustavo",
+    "Amanda", "Daniel", "Suelen", "Fábio", "Débora", "Cláudio"
+  ];
+
+  function showNotification() {
+    const name = names[Math.floor(Math.random() * names.length)];
+    const people = Math.floor(Math.random() * 5) + 1;
+    const message = `${name} e mais ${people} pessoas acabaram de baixar o UnitTV!`;
+
+    const notif = document.getElementById("notification");
+    notif.textContent = message;
+    notif.classList.add("opacity-100");
+    notif.classList.remove("opacity-0");
+
+    setTimeout(() => {
+      notif.classList.remove("opacity-100");
+      notif.classList.add("opacity-0");
+    }, 5000);
+  }
+
+  setInterval(showNotification, 15000);
+</script>
+
 </body>
 </html>
