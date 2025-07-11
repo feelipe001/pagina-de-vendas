@@ -3,288 +3,436 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Afroworld - Cultura Afro, Entretenimento e Tecnologia</title>
+    <meta name="description" content="UnitTV - Tudo o que você ama assistir em um só lugar. Filmes, séries e canais ao vivo direto no seu celular ou Smart TV.">
+    <title>UnitTV - O futuro do entretenimento digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        electric: {
+                            blue: '#00f5ff',
+                            purple: '#9d00ff',
+                            yellow: '#ffee00',
+                            pink: '#ff00f5'
+                        },
+                        dark: {
+                            950: '#0a0a0a'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            'from': { 'box-shadow': '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #9d00ff, 0 0 20px #9d00ff' },
+                            'to': { 'box-shadow': '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #9d00ff, 0 0 40px #9d00ff' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
         
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #0a0a0a;
-            color: white;
-            scroll-behavior: smooth;
+            transition: background-color 0.5s ease;
         }
         
-        .gold-text {
-            color: #FFD700;
+        .futuristic-font {
+            font-family: 'Orbitron', sans-serif;
         }
         
-        .neon-green {
-            color: #39FF14;
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
         }
         
-        .bg-neon-green {
-            background-color: #39FF14;
-        }
-        
-        .bg-gold {
-            background-color: #FFD700;
-        }
-        
-        .section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .hover-grow {
-            transition: transform 0.3s ease;
-        }
-        
-        .hover-grow:hover {
-            transform: scale(1.05);
-        }
-        
-        .nav-link {
+        .neon-border {
             position: relative;
         }
         
-        .nav-link::after {
+        .neon-border::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -2px;
+            top: 0;
             left: 0;
-            background-color: #FFD700;
-            transition: width 0.3s ease;
+            right: 0;
+            bottom: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(45deg, #9d00ff, #00f5ff, #ffee00);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
         
-        .nav-link:hover::after {
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 100%;
+        }
+        
+        .testimonial-card {
+            backdrop-filter: blur(10px);
+        }
+        
+        .app-mockup {
+            filter: drop-shadow(0 0 15px rgba(157, 0, 255, 0.7));
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column-reverse;
+            }
         }
     </style>
 </head>
-<body>
-    <!-- Header/Navigation -->
-    <header class="sticky top-0 z-50 bg-black bg-opacity-90 backdrop-blur-sm border-b border-gray-800">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <h1 class="text-2xl font-bold gold-text">AFROWORLD</h1>
+<body class="bg-dark-950 text-gray-100 min-h-screen">
+    <!-- Dark/Light Mode Toggle -->
+    <div class="fixed top-4 right-4 z-50">
+        <button id="theme-toggle" class="p-2 rounded-full bg-electric-purple text-white hover:bg-electric-blue transition-all duration-300">
+            <i class="fas fa-moon" id="theme-icon"></i>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="container mx-auto px-4 py-6 flex justify-between items-center">
+        <div class="flex items-center">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-electric-purple to-electric-blue flex items-center justify-center mr-3">
+                <i class="fas fa-play text-xl"></i>
             </div>
-            
-            <nav class="hidden md:flex space-x-8">
-                <a href="#inicio" class="nav-link text-white hover:text-gold-500 transition">Início</a>
-                <a href="#unittv" class="nav-link text-white hover:text-gold-500 transition">UnitTV</a>
-                <a href="#ensaios" class="nav-link text-white hover:text-gold-500 transition">Ensaios IA</a>
-                <a href="#contato" class="nav-link text-white hover:text-gold-500 transition">Contato</a>
-            </nav>
-            
-            <button class="md:hidden text-white focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            <h1 class="futuristic-font text-2xl font-bold gradient-text bg-gradient-to-r from-electric-purple via-electric-blue to-electric-yellow">UNIT<span class="text-electric-yellow">TV</span></h1>
         </div>
-        
-        <!-- Mobile menu -->
-        <div class="md:hidden hidden bg-black py-2 px-4 border-t border-gray-800">
-            <div class="flex flex-col space-y-3">
-                <a href="#inicio" class="text-white hover:text-gold-500 transition">Início</a>
-                <a href="#unittv" class="text-white hover:text-gold-500 transition">UnitTV</a>
-                <a href="#ensaios" class="text-white hover:text-gold-500 transition">Ensaios IA</a>
-                <a href="#contato" class="text-white hover:text-gold-500 transition">Contato</a>
-            </div>
-        </div>
+        <nav class="hidden md:flex space-x-8">
+            <a href="#features" class="hover:text-electric-blue transition-colors">Recursos</a>
+            <a href="#how-it-works" class="hover:text-electric-blue transition-colors">Como Funciona</a>
+            <a href="#testimonials" class="hover:text-electric-blue transition-colors">Depoimentos</a>
+            <a href="#download" class="hover:text-electric-blue transition-colors">Download</a>
+        </nav>
+        <button class="md:hidden text-2xl">
+            <i class="fas fa-bars"></i>
+        </button>
     </header>
 
     <!-- Hero Section -->
-    <section id="unittv" class="section py-20 bg-gradient-to-b from-black to-gray-900">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
-            <div class="md:w-1/2 mb-10 md:mb-0">
-                <h2 class="text-4xl md:text-6xl font-bold mb-6">
-                    <span class="gold-text">Assista tudo</span> <span class="neon-green">o que você ama</span> com a UnitTV
+    <section class="container mx-auto px-4 py-12 md:py-24">
+        <div class="flex flex-col md:flex-row hero-content items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h2 class="futuristic-font text-4xl md:text-6xl font-bold mb-6 gradient-text bg-gradient-to-r from-electric-purple via-electric-blue to-electric-yellow">
+                    TUDO O QUE VOCÊ AMA ASSISTIR, EM UM SÓ LUGAR.
                 </h2>
-                <p class="text-lg text-gray-300 mb-8">
-                    Filmes, séries, canais e muito mais na palma da sua mão. Baixe agora nosso app parceiro e descubra um mundo de entretenimento.
+                <p class="text-xl mb-8 text-gray-300">
+                    Filmes, séries e canais ao vivo direto no seu celular, Smart TV ou onde você estiver. Baixe grátis agora!
                 </p>
-                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="https://links.baixe.online/IAFLDMW" class="bg-neon-green hover:bg-green-500 text-black font-bold py-3 px-6 rounded-full flex items-center justify-center transition hover-grow">
-                        <i class="fab fa-android mr-2 text-xl"></i> Baixar para Android
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="https://links.unitvnet.app/IAFLDMW" class="bg-gradient-to-r from-electric-purple to-electric-blue hover:from-electric-blue hover:to-electric-purple text-white font-bold py-4 px-8 rounded-full text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-electric-purple/50">
+                        <i class="fab fa-android mr-2"></i> Baixar no Android
                     </a>
-                    <a href="https://wa.me/message/3IY74MCWLWN2B1" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full flex items-center justify-center transition hover-grow">
-                        <i class="fab fa-apple mr-2 text-xl"></i> Baixar para iPhone ou Smart TV
+                    <a href="https://wa.me/message/3IY74MCWLWN2B1" class="bg-gradient-to-r from-electric-blue to-electric-yellow hover:from-electric-yellow hover:to-electric-blue text-gray-900 font-bold py-4 px-8 rounded-full text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-electric-blue/50">
+                        <i class="fab fa-apple mr-2"></i> Baixar no iPhone e Smart TV
                     </a>
                 </div>
             </div>
-            <div class="md:w-1/2 flex justify-center">
-                <div class="relative w-full max-w-md">
-                    <div class="absolute -inset-4 bg-gradient-to-r from-purple-600 to-blue-500 rounded-xl blur opacity-75"></div>
-                    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                         alt="UnitTV App Preview" 
-                         class="relative rounded-lg shadow-2xl w-full h-auto">
+            <div class="md:w-1/2 relative">
+                <div class="app-mockup animation-float">
+                    <img src="https://via.placeholder.com/500x900/0a0a0a/9d00ff?text=UnitTV+App" alt="UnitTV App Mockup" class="w-full max-w-md mx-auto rounded-2xl animation-float">
+                </div>
+                <div class="absolute -top-10 -left-10 w-24 h-24 rounded-full bg-electric-purple opacity-20 filter blur-xl"></div>
+                <div class="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-electric-blue opacity-20 filter blur-xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Banner -->
+    <section class="py-8 bg-gradient-to-r from-electric-purple/20 to-electric-blue/20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="inline-flex items-center justify-center bg-gray-900/80 px-6 py-3 rounded-full border border-electric-purple">
+                <span class="text-electric-blue font-bold mr-2">PARCEIROS OFICIAIS:</span>
+                <span class="text-white">A UnitTV e o Cinema Visionário são parceiros oficiais da Afroworld. Juntos, trazemos até você a melhor experiência em filmes, séries e canais ao vivo, com qualidade e confiança.</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-gradient-to-b from-dark-950 to-gray-900/50">
+        <div class="container mx-auto px-4">
+            <h2 class="futuristic-font text-3xl md:text-4xl font-bold text-center mb-16 gradient-text bg-gradient-to-r from-electric-purple to-electric-blue">
+                POR QUE ESCOLHER O UNITT<span class="text-electric-yellow">V</span>?
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-gray-900/50 p-8 rounded-xl border border-gray-800 hover:border-electric-purple transition-all duration-300 hover:shadow-lg hover:shadow-electric-purple/20">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-electric-purple to-electric-blue flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Assista onde quiser</h3>
+                    <p class="text-gray-300 text-center">No celular, tablet, Smart TV ou computador. Leve seu entretenimento para qualquer lugar.</p>
+                </div>
+                <div class="bg-gray-900/50 p-8 rounded-xl border border-gray-800 hover:border-electric-blue transition-all duration-300 hover:shadow-lg hover:shadow-electric-blue/20">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-electric-blue to-electric-yellow flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-film text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Conteúdo atualizado</h3>
+                    <p class="text-gray-300 text-center">Filmes e séries sempre renovados com os melhores lançamentos e clássicos imperdíveis.</p>
+                </div>
+                <div class="bg-gray-900/50 p-8 rounded-xl border border-gray-800 hover:border-electric-yellow transition-all duration-300 hover:shadow-lg hover:shadow-electric-yellow/20">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-electric-yellow to-electric-pink flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-tv text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Canais ao vivo 24h</h3>
+                    <p class="text-gray-300 text-center">Mais de 100 canais de TV ao vivo incluindo esportes, notícias, filmes e entretenimento.</p>
+                </div>
+                <div class="bg-gray-900/50 p-8 rounded-xl border border-gray-800 hover:border-electric-pink transition-all duration-300 hover:shadow-lg hover:shadow-electric-pink/20">
+                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-electric-pink to-electric-purple flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-gem text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Zero mensalidade</h3>
+                    <p class="text-gray-300 text-center">Experimente grátis sem compromisso. Sem cobranças ocultas ou taxas surpresa.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- IA Photo Section -->
-    <section id="ensaios" class="section py-20 bg-gray-900">
+    <!-- Video Demo Section -->
+    <section id="how-it-works" class="py-16">
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4">
-                    <span class="gold-text">Crie Ensaios Fotográficos</span> <span class="neon-green">Incríveis</span> sem sair de casa
-                </h2>
-                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
-                    Aprenda a gerar fotos profissionais usando inteligência artificial. Transforme imagens comuns em ensaios artísticos, para redes sociais, negócios ou lembranças pessoais.
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div class="group relative overflow-hidden rounded-xl shadow-lg transition hover-grow">
-                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
-                         alt="Ensaio Fotográfico 1" 
-                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-xl font-bold text-white">Retratos Profissionais</h3>
-                    </div>
-                </div>
-                
-                <div class="group relative overflow-hidden rounded-xl shadow-lg transition hover-grow">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
-                         alt="Ensaio Fotográfico 2" 
-                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-xl font-bold text-white">Estilo de Vida</h3>
-                    </div>
-                </div>
-                
-                <div class="group relative overflow-hidden rounded-xl shadow-lg transition hover-grow">
-                    <img src="https://images.unsplash.com/photo-1530785602389-07594beb8b73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
-                         alt="Ensaio Fotográfico 3" 
-                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
-                    <div class="absolute bottom-0 left-0 p-4">
-                        <h3 class="text-xl font-bold text-white">Cultura Afro</h3>
-                    </div>
+            <h2 class="futuristic-font text-3xl md:text-4xl font-bold text-center mb-16 gradient-text bg-gradient-to-r from-electric-blue to-electric-yellow">
+                VEJA O UNITT<span class="text-electric-purple">V</span> EM AÇÃO
+            </h2>
+            <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden neon-border">
+                <div class="video-container">
+                    <!-- Placeholder for video - replace with actual embed code -->
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
-            
-            <div class="text-center">
-                <a href="#contato" class="inline-block bg-gradient-to-r from-gold-500 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-bold py-4 px-8 rounded-full text-lg transition hover-grow">
-                    <i class="fas fa-magic mr-2"></i> Quero Aprender Agora
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-16 bg-gradient-to-b from-gray-900/50 to-dark-950">
+        <div class="container mx-auto px-4">
+            <h2 class="futuristic-font text-3xl md:text-4xl font-bold text-center mb-16 gradient-text bg-gradient-to-r from-electric-yellow to-electric-purple">
+                O QUE NOSSOS USUÁRIOS DIZEM
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-gray-900/50 p-8 rounded-xl border border-gray-800 backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-electric-purple to-electric-blue flex items-center justify-center mr-4">
+                            <span class="text-xl font-bold">A</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Ana Carolina</h4>
+                            <div class="flex text-electric-yellow">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Finalmente um app que tem TUDO! Assisto meus seriados favoritos e ainda acompanho os canais de notícias. Melhor custo-benefício que já vi!"</p>
+                </div>
+                <div class="testimonial-card bg-gray-900/50 p-8 rounded-xl border border-gray-800 backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-electric-blue to-electric-yellow flex items-center justify-center mr-4">
+                            <span class="text-xl font-bold">R</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Ricardo Almeida</h4>
+                            <div class="flex text-electric-yellow">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Instalei na minha Smart TV e no celular. A qualidade do streaming é impressionante, mesmo em conexões mais lentas. Recomendo demais!"</p>
+                </div>
+                <div class="testimonial-card bg-gray-900/50 p-8 rounded-xl border border-gray-800 backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-electric-yellow to-electric-pink flex items-center justify-center mr-4">
+                            <span class="text-xl font-bold">M</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Mariana Souza</h4>
+                            <div class="flex text-electric-yellow">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Adoro o catálogo de filmes, sempre tem novidades. E a interface é tão intuitiva que até minha avó consegue usar sem problemas!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="download" class="py-16 bg-gradient-to-r from-electric-purple/20 to-electric-blue/20">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="futuristic-font text-3xl md:text-4xl font-bold mb-6 gradient-text bg-gradient-to-r from-electric-purple to-electric-yellow">
+                PRONTO PARA A REVOLUÇÃO DO SEU ENTERTENIMENTO?
+            </h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Baixe agora o UnitTV e transforme a maneira como você consome conteúdo. Totalmente grátis para experimentar!
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://links.unitvnet.app/IAFLDMW" class="bg-gradient-to-r from-electric-purple to-electric-blue hover:from-electric-blue hover:to-electric-purple text-white font-bold py-4 px-8 rounded-full text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-electric-purple/50">
+                    <i class="fab fa-android mr-2"></i> Baixar no Android
+                </a>
+                <a href="https://wa.me/message/3IY74MCWLWN2B1" class="bg-gradient-to-r from-electric-blue to-electric-yellow hover:from-electric-yellow hover:to-electric-blue text-gray-900 font-bold py-4 px-8 rounded-full text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-electric-blue/50">
+                    <i class="fab fa-apple mr-2"></i> Baixar no iPhone e Smart TV
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contato" class="section py-20 bg-black">
-        <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl md:text-5xl font-bold mb-6">
-                    <span class="gold-text">Conecte-se</span> <span class="neon-green">com a Afroworld</span>
-                </h2>
-                <p class="text-lg text-gray-300 mb-12">
-                    Siga-nos nas redes sociais para ficar por dentro de todas as novidades sobre entretenimento, tecnologia e cultura afro.
-                </p>
-                
-                <div class="flex justify-center space-x-6">
-                    <a href="#" class="bg-gray-800 hover:bg-gray-700 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl transition hover-grow">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" class="bg-gray-800 hover:bg-gray-700 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl transition hover-grow">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="https://wa.me/message/3IY74MCWLWN2B1" class="bg-gray-800 hover:bg-gray-700 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl transition hover-grow">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
-    <footer class="py-8 border-t border-gray-800 bg-black">
+    <footer class="bg-gray-900/80 py-12">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
-                    <h2 class="text-xl font-bold gold-text">AFROWORLD</h2>
-                    <p class="text-gray-400 text-sm">Cultura Afro • Entretenimento • Tecnologia</p>
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-purple to-electric-blue flex items-center justify-center mr-3">
+                            <i class="fas fa-play"></i>
+                        </div>
+                        <h2 class="futuristic-font text-xl font-bold gradient-text bg-gradient-to-r from-electric-purple to-electric-blue">UNIT<span class="text-electric-yellow">TV</span></h2>
+                    </div>
+                    <p class="text-gray-400 mt-2">O futuro do entretenimento digital</p>
                 </div>
-                
-                <div class="text-gray-400 text-sm">
-                    &copy; 2023 Afroworld. Todos os direitos reservados.
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Links Rápidos</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-electric-blue transition-colors">Início</a></li>
+                            <li><a href="#features" class="text-gray-400 hover:text-electric-blue transition-colors">Recursos</a></li>
+                            <li><a href="#how-it-works" class="text-gray-400 hover:text-electric-blue transition-colors">Como Funciona</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Suporte</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-electric-blue transition-colors">FAQ</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-electric-blue transition-colors">Contato</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-electric-blue transition-colors">Termos de Uso</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold mb-4">Redes Sociais</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-electric-purple transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-electric-blue transition-colors">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-electric-yellow transition-colors text-gray-100 hover:text-gray-900">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
+                <p>&copy; 2023 UnitTV. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        document.querySelector('button').addEventListener('click', function() {
-            const mobileMenu = document.querySelector('.md\\:hidden.hidden');
-            mobileMenu.classList.toggle('hidden');
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const html = document.documentElement;
+        
+        // Check for saved user preference or use dark mode as default
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        if (currentTheme) {
+            html.classList.add(currentTheme);
+            updateIcon(currentTheme);
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                localStorage.setItem('theme', 'light');
+                updateIcon('light');
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateIcon('dark');
+            }
         });
         
-        // Scroll animation
-        const sections = document.querySelectorAll('.section');
+        function updateIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                document.body.style.backgroundColor = '#0a0a0a';
+            } else {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                document.body.style.backgroundColor = '#f8fafc';
+            }
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
         
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('animate-fadeIn');
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, observerOptions);
         
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    const mobileMenu = document.querySelector('.md\\:hidden.hidden');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
-                }
-            });
+        document.querySelectorAll('.testimonial-card, .app-mockup, [class*="hover:"]').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
 </html>
-            \});
-        \});
-    </script>
-</body>
-</html>
-229    <script>
-Ask DeepSite for edits
-
-Edit
-
-Settings
-
-$0
