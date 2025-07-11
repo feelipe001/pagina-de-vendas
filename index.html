@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afroworld - Cultura Afro, Entretenimento e Tecnologia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a0a;
+            color: white;
+            scroll-behavior: smooth;
+        }
+        
+        .gold-text {
+            color: #FFD700;
+        }
+        
+        .neon-green {
+            color: #39FF14;
+        }
+        
+        .bg-neon-green {
+            background-color: #39FF14;
+        }
+        
+        .bg-gold {
+            background-color: #FFD700;
+        }
+        
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hover-grow {
+            transition: transform 0.3s ease;
+        }
+        
+        .hover-grow:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #FFD700;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-black bg-opacity-90 backdrop-blur-sm border-b border-gray-800">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-bold gold-text">AFROWORLD</h1>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#inicio" class="nav-link text-white hover:text-gold-500 transition">Início</a>
+                <a href="#unittv" class="nav-link text-white hover:text-gold-500 transition">UnitTV</a>
+                <a href="#ensaios" class="nav-link text-white hover:text-gold-500 transition">Ensaios IA</a>
+                <a href="#contato" class="nav-link text-white hover:text-gold-500 transition">Contato</a>
+            </nav>
+            
+            <button class="md:hidden text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div class="md:hidden hidden bg-black py-2 px-4 border-t border-gray-800">
+            <div class="flex flex-col space-y-3">
+                <a href="#inicio" class="text-white hover:text-gold-500 transition">Início</a>
+                <a href="#unittv" class="text-white hover:text-gold-500 transition">UnitTV</a>
+                <a href="#ensaios" class="text-white hover:text-gold-500 transition">Ensaios IA</a>
+                <a href="#contato" class="text-white hover:text-gold-500 transition">Contato</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="unittv" class="section py-20 bg-gradient-to-b from-black to-gray-900">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">
+                    <span class="gold-text">Assista tudo</span> <span class="neon-green">o que você ama</span> com a UnitTV
+                </h2>
+                <p class="text-lg text-gray-300 mb-8">
+                    Filmes, séries, canais e muito mais na palma da sua mão. Baixe agora nosso app parceiro e descubra um mundo de entretenimento.
+                </p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="https://links.baixe.online/IAFLDMW" class="bg-neon-green hover:bg-green-500 text-black font-bold py-3 px-6 rounded-full flex items-center justify-center transition hover-grow">
+                        <i class="fab fa-android mr-2 text-xl"></i> Baixar para Android
+                    </a>
+                    <a href="https://wa.me/message/3IY74MCWLWN2B1" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full flex items-center justify-center transition hover-grow">
+                        <i class="fab fa-apple mr-2 text-xl"></i> Baixar para iPhone ou Smart TV
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-full max-w-md">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-purple-600 to-blue-500 rounded-xl blur opacity-75"></div>
+                    <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="UnitTV App Preview" 
+                         class="relative rounded-lg shadow-2xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IA Photo Section -->
+    <section id="ensaios" class="section py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">
+                    <span class="gold-text">Crie Ensaios Fotográficos</span> <span class="neon-green">Incríveis</span> sem sair de casa
+                </h2>
+                <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                    Aprenda a gerar fotos profissionais usando inteligência artificial. Transforme imagens comuns em ensaios artísticos, para redes sociais, negócios ou lembranças pessoais.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="group relative overflow-hidden rounded-xl shadow-lg transition hover-grow">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Ensaio Fotográfico 1" 
+                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <h3 class="text-xl font-bold text-white">Retratos Profissionais</h3>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden rounded-xl shadow-lg transition hover-grow">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
+                         alt="Ensaio Fotográfico 2" 
+                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <h3 class="text-xl font-bold text-white">Estilo de Vida</h3>
+                    </div>
+                </div>
+                
+                <div class="group relative overflow-hidden rounded-xl shadow-lg transition hover-grow">
+                    <img src="https://images.unsplash.com/photo-1530785602389-07594beb8b73?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
+                         alt="Ensaio Fotográfico 3" 
+                         class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80"></div>
+                    <div class="absolute bottom-0 left-0 p-4">
+                        <h3 class="text-xl font-bold text-white">Cultura Afro</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <a href="#contato" class="inline-block bg-gradient-to-r from-gold-500 to-yellow-600 hover:from-yellow-500 hover:to-yellow-700 text-black font-bold py-4 px-8 rounded-full text-lg transition hover-grow">
+                    <i class="fas fa-magic mr-2"></i> Quero Aprender Agora
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="section py-20 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">
+                    <span class="gold-text">Conecte-se</span> <span class="neon-green">com a Afroworld</span>
+                </h2>
+                <p class="text-lg text-gray-300 mb-12">
+                    Siga-nos nas redes sociais para ficar por dentro de todas as novidades sobre entretenimento, tecnologia e cultura afro.
+                </p>
+                
+                <div class="flex justify-center space-x-6">
+                    <a href="#" class="bg-gray-800 hover:bg-gray-700 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl transition hover-grow">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="bg-gray-800 hover:bg-gray-700 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl transition hover-grow">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://wa.me/message/3IY74MCWLWN2B1" class="bg-gray-800 hover:bg-gray-700 text-white w-14 h-14 rounded-full flex items-center justify-center text-2xl transition hover-grow">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 border-t border-gray-800 bg-black">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-xl font-bold gold-text">AFROWORLD</h2>
+                    <p class="text-gray-400 text-sm">Cultura Afro • Entretenimento • Tecnologia</p>
+                </div>
+                
+                <div class="text-gray-400 text-sm">
+                    &copy; 2023 Afroworld. Todos os direitos reservados.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('button').addEventListener('click', function() {
+            const mobileMenu = document.querySelector('.md\\:hidden.hidden');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Scroll animation
+        const sections = document.querySelectorAll('.section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.querySelector('.md\\:hidden.hidden');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+            \});
+        \});
+    </script>
+</body>
+</html>
+229    <script>
+Ask DeepSite for edits
+
+Edit
+
+Settings
+
+$0
