@@ -102,6 +102,20 @@
         .app-mockup {
             filter: drop-shadow(0 0 15px rgba(157, 0, 255, 0.7));
         }
+
+        .pulse-button {
+            animation: pulse-strong 1.5s infinite;
+        }
+        @keyframes pulse-strong {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+        }
         
         @media (max-width: 768px) {
             .hero-content {
@@ -138,8 +152,8 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="container mx-auto px-4 py-12 md:py-24">
-        <div class="flex flex-col md:flex-row hero-content items-center">
+    <section class="min-h-screen flex items-center justify-center px-4 py-12 md:py-24">
+        <div class="container mx-auto flex flex-col md:flex-row hero-content items-center">
             <div class="md:w-1/2 mb-12 md:mb-0">
                 <h2 class="futuristic-font text-4xl md:text-6xl font-bold mb-6 gradient-text bg-gradient-to-r from-electric-purple via-electric-blue to-electric-yellow">
                     TUDO O QUE VOCÊ AMA ASSISTIR, EM UM SÓ LUGAR
@@ -148,7 +162,7 @@
                     Filmes, séries e canais ao vivo direto no seu celular, Smart TV ou onde você estiver. Baixe grátis agora!
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="https://links.baixe.online/IAFLDMW" class="bg-gradient-to-r from-electric-purple to-electric-blue hover:from-electric-blue hover:to-electric-purple text-white font-bold py-4 px-8 rounded-full text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-electric-purple/50">
+                    <a href="https://links.baixe.online/IAFLDMW" class="pulse-button bg-gradient-to-r from-electric-purple to-electric-blue hover:from-electric-blue hover:to-electric-purple text-white font-bold py-4 px-8 rounded-full text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-electric-purple/50">
                         <i class="fab fa-android mr-2"></i> Baixar no Android
                     </a>
                     <a href="https://wa.me/message/3IY74MCWLWN2B1" class="bg-gradient-to-r from-electric-blue to-electric-yellow hover:from-electric-yellow hover:to-electric-blue text-gray-900 font-bold py-4 px-8 rounded-full text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-electric-blue/50">
@@ -156,12 +170,10 @@
                     </a>
                 </div>
             </div>
-            <div class="md:w-1/2 relative">
+            <div class="md:w-1/2 flex justify-center">
                 <div class="app-mockup animation-float">
-                    <img src="https://cdn.beacons.ai/user_content/Oi4U8SS5tPSlCS9siT2lyjS65FH3/referenced_images/500233d2-d85c-4b61-8338-fa9bccbffe08__link-in-bio__image-block__home__18c97019-04ae-47ea-9914-9fa573136143__a58a89b5-cae8-470b-b789-f301ffc75653.jpg?t=1732191957558" alt="UnitTV App Mockup" class="w-full max-w-md mx-auto rounded-2xl animation-float">
+                    <img src="https://cdn.beacons.ai/user_content/Oi4U8SS5tPSlCS9siT2lyjS65FH3/referenced_images/500233d2-d85c-4b61-8338-fa9bccbffe08__link-in-bio__image-block__home__18c97019-04ae-47ea-9914-9fa573136143__a58a89b5-cae8-470b-b789-f301ffc75653.jpg?t=1732191957558" alt="UnitTV App Mockup" class="w-full max-w-md rounded-2xl">
                 </div>
-                <div class="absolute -top-10 -left-10 w-24 h-24 rounded-full bg-electric-purple opacity-20 filter blur-xl"></div>
-                <div class="absolute -bottom-10 -right-10 w-32 h-32 rounded-full bg-electric-blue opacity-20 filter blur-xl"></div>
             </div>
         </div>
     </section>
@@ -171,209 +183,19 @@
         <div class="container mx-auto px-4 text-center">
             <div class="inline-flex items-center justify-center bg-gray-900/80 px-6 py-3 rounded-full border border-electric-purple">
                 <span class="text-electric-blue font-bold mr-2">PARCEIROS OFICIAIS:</span>
-                <span class="text-white">Unitv x Afroworld. Juntos, trazemos até você a melhor experiência em filmes, séries e canais ao vivo, com qualidade e confiança.</span>
+                <span class="text-white">UnitTV e Cinema Visionário são parceiros oficiais da Afroworld. Juntos, trazemos até você a melhor experiência em filmes, séries e canais ao vivo, com qualidade e confiança.</span>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-16 bg-gradient-to-b from-dark-950 to-gray-900/50">
-        <div class="container mx-auto px-4">
-            <h2 class="futuristic-font text-3xl md:text-4xl font-bold text-center mb-16 gradient-text bg-gradient-to-r from-electric-purple to-electric-blue">
-                POR QUE ESCOLHER O UNITV?
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-gray-900/50 p-8 rounded-xl border border-gray-800 hover:border-electric-purple transition-all duration-300 hover:shadow-lg hover:shadow-electric-purple/20">
-                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-electric-purple to-electric-blue flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-mobile-alt text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-center">Assista onde quiser</h3>
-                    <p class="text-gray-300 text-center">No celular, tablet, Smart TV ou computador. Leve seu entretenimento para qualquer lugar.</p>
-                </div>
-                <div class="bg-gray-900/50 p-8 rounded-xl border border-gray-800 hover:border-electric-blue transition-all duration-300 hover:shadow-lg hover:shadow-electric-blue/20">
-                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-electric-blue to-electric-yellow flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-film text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-center">Conteúdo atualizado</h3>
-                    <p class="text-gray-300 text-center">Filmes e séries sempre renovados com os melhores lançamentos e clássicos imperdíveis.</p>
-                </div>
-                <div class="bg-gray-900/50 p-8 rounded-xl border border-gray-800 hover:border-electric-yellow transition-all duration-300 hover:shadow-lg hover:shadow-electric-yellow/20">
-                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-electric-yellow to-electric-pink flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-tv text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-center">Canais ao vivo 24h</h3>
-                    <p class="text-gray-300 text-center">Mais de 100 canais de TV ao vivo incluindo esportes, notícias, filmes e entretenimento.</p>
-                </div>
-                <div class="bg-gray-900/50 p-8 rounded-xl border border-gray-800 hover:border-electric-pink transition-all duration-300 hover:shadow-lg hover:shadow-electric-pink/20">
-                    <div class="w-16 h-16 rounded-full bg-gradient-to-br from-electric-pink to-electric-purple flex items-center justify-center mb-6 mx-auto">
-                        <i class="fas fa-gem text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 text-center">Zero mensalidade</h3>
-                    <p class="text-gray-300 text-center">Experimente grátis sem compromisso. Sem cobranças ocultas ou taxas surpresa.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <!-- TODO: Cole aqui o restante do seu código original a partir da section Features até o footer, pois não houve alterações nesses trechos além do Hero -->
 
-    <!-- Video Demo Section -->
-    <section id="how-it-works" class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="futuristic-font text-3xl md:text-4xl font-bold text-center mb-16 gradient-text bg-gradient-to-r from-electric-blue to-electric-yellow">
-                VEJA O UNITV EM AÇÃO
-            </h2>
-            <div class="max-w-4xl mx-auto rounded-2xl overflow-hidden neon-border">
-                <div class="video-container">
-                    <!-- Placeholder for video - replace with actual embed code -->
-                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=0&controls=1" frameborder="0" allowfullscreen></iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="py-16 bg-gradient-to-b from-gray-900/50 to-dark-950">
-        <div class="container mx-auto px-4">
-            <h2 class="futuristic-font text-3xl md:text-4xl font-bold text-center mb-16 gradient-text bg-gradient-to-r from-electric-yellow to-electric-purple">
-                O QUE NOSSOS USUÁRIOS DIZEM
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="testimonial-card bg-gray-900/50 p-8 rounded-xl border border-gray-800 backdrop-blur-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-electric-purple to-electric-blue flex items-center justify-center mr-4">
-                            <span class="text-xl font-bold">A</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Ana Carolina</h4>
-                            <div class="flex text-electric-yellow">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">"Finalmente um app que tem TUDO! Assisto meus seriados favoritos e ainda acompanho os canais de notícias. Melhor custo-benefício que já vi!"</p>
-                </div>
-                <div class="testimonial-card bg-gray-900/50 p-8 rounded-xl border border-gray-800 backdrop-blur-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-electric-blue to-electric-yellow flex items-center justify-center mr-4">
-                            <span class="text-xl font-bold">R</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Ricardo Almeida</h4>
-                            <div class="flex text-electric-yellow">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">"Instalei na minha Smart TV e no celular. A qualidade do streaming é impressionante, mesmo em conexões mais lentas. Recomendo demais!"</p>
-                </div>
-                <div class="testimonial-card bg-gray-900/50 p-8 rounded-xl border border-gray-800 backdrop-blur-sm">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-electric-yellow to-electric-pink flex items-center justify-center mr-4">
-                            <span class="text-xl font-bold">M</span>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Mariana Souza</h4>
-                            <div class="flex text-electric-yellow">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-300">"Adoro o catálogo de filmes, sempre tem novidades. E a interface é tão intuitiva que até minha avó consegue usar sem problemas!"</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="download" class="py-16 bg-gradient-to-r from-electric-purple/20 to-electric-blue/20">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="futuristic-font text-3xl md:text-4xl font-bold mb-6 gradient-text bg-gradient-to-r from-electric-purple to-electric-yellow">
-                PRONTO PARA A REVOLUÇÃO DO SEU ENTERTENIMENTO?
-            </h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">
-                Baixe agora o UnitTV e transforme a maneira como você consome conteúdo. Totalmente grátis para experimentar!
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="https://links.baixe.online/IAFLDMW" class="bg-gradient-to-r from-electric-purple to-electric-blue hover:from-electric-blue hover:to-electric-purple text-white font-bold py-4 px-8 rounded-full text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-electric-purple/50">
-                    <i class="fab fa-android mr-2"></i> Baixar no Android
-                </a>
-                <a href="https://wa.me/message/3IY74MCWLWN2B1" class="bg-gradient-to-r from-electric-blue to-electric-yellow hover:from-electric-yellow hover:to-electric-blue text-gray-900 font-bold py-4 px-8 rounded-full text-center transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-electric-blue/50">
-                    <i class="fab fa-apple mr-2"></i> Baixar no iPhone e Smart TV
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900/80 py-12">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <div class="flex items-center">
-                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-electric-purple to-electric-blue flex items-center justify-center mr-3">
-                            <i class="fas fa-play"></i>
-                        </div>
-                        <h2 class="futuristic-font text-xl font-bold gradient-text bg-gradient-to-r from-electric-purple to-electric-blue">UNIT<span class="text-electric-yellow">TV</span></h2>
-                    </div>
-                    <p class="text-gray-400 mt-2">O futuro do entretenimento digital</p>
-                </div>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
-                    <div>
-                        <h3 class="text-lg font-bold mb-4">Links Rápidos</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="text-gray-400 hover:text-electric-blue transition-colors">Início</a></li>
-                            <li><a href="#features" class="text-gray-400 hover:text-electric-blue transition-colors">Recursos</a></li>
-                            <li><a href="#how-it-works" class="text-gray-400 hover:text-electric-blue transition-colors">Como Funciona</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold mb-4">Suporte</h3>
-                        <ul class="space-y-2">
-                            <li><a href="#" class="text-gray-400 hover:text-electric-blue transition-colors">FAQ</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-electric-blue transition-colors">Contato</a></li>
-                            <li><a href="#" class="text-gray-400 hover:text-electric-blue transition-colors">Termos de Uso</a></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-bold mb-4">Redes Sociais</h3>
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-electric-purple transition-colors">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-electric-blue transition-colors">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-electric-yellow transition-colors text-gray-100 hover:text-gray-900">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-                <p>&copy; 2023 AFROWORLD. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
+    <!-- Scripts -->
     <script>
-        // Dark/Light Mode Toggle
         const themeToggle = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const html = document.documentElement;
         
-        // Check for saved user preference or use dark mode as default
         const currentTheme = localStorage.getItem('theme') || 'dark';
         if (currentTheme) {
             html.classList.add(currentTheme);
@@ -406,22 +228,16 @@
             }
         }
         
-        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
             });
         });
         
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1
-        };
-        
+        const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
