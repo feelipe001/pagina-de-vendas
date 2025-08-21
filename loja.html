@@ -20,79 +20,42 @@
             theme: {
                 extend: {
                     colors: {
-                        gold: {
-                            DEFAULT: '#d4af37',
-                            500: '#d4af37',
-                            600: '#b58b2b',
-                        },
-                        zinc: {
-                            950: '#0a0a0a',
-                        }
+                        gold: { DEFAULT: '#d4af37', 500: '#d4af37', 600: '#b58b2b' },
+                        zinc: { 950: '#0a0a0a' }
                     },
-                    fontFamily: {
-                        poppins: ['Poppins', 'sans-serif'],
-                    },
+                    fontFamily: { poppins: ['Poppins', 'sans-serif'] },
                 }
             }
         }
     </script>
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #0a0a0a;
-            color: #f4f4f5;
-        }
-        .gradient-bg {
-            background: linear-gradient(135deg, #d4af37 0%, #b58b2b 100%);
-        }
-        .gradient-border {
-            position: relative;
-        }
+        body { font-family: 'Poppins', sans-serif; background:#0a0a0a; color:#f4f4f5; }
+        .gradient-bg { background: linear-gradient(135deg, #d4af37 0%, #b58b2b 100%); }
+        .gradient-border { position: relative; }
         .gradient-border::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 0.75rem;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.5) 0%, rgba(181, 139, 43, 0.5) 100%);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
+            content:''; position:absolute; inset:0; border-radius:0.75rem; padding:1px;
+            background: linear-gradient(135deg, rgba(212,175,55,.5) 0%, rgba(181,139,43,.5) 100%);
+            -webkit-mask: linear-gradient(#0000 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none;
         }
-        .image-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(181, 139, 43, 0.1) 100%);
-        }
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .accordion.active .accordion-content {
-            max-height: 500px;
-        }
-        .accordion.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-        .sticky-cta {
-            box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
+        .image-placeholder { display:flex; align-items:center; justify-content:center;
+            background: linear-gradient(135deg, rgba(212,175,55,.08) 0%, rgba(181,139,43,.08) 100%); }
+        .accordion-content { max-height:0; overflow:hidden; transition:max-height .3s ease-out; }
+        .accordion.active .accordion-content { max-height:500px; }
+        .accordion.active .accordion-icon { transform: rotate(180deg); }
+        .sticky-cta { box-shadow: 0 -4px 6px -1px rgb(0 0 0 / .1), 0 -2px 4px -1px rgb(0 0 0 / .06); }
+        .shake { animation: shake .18s linear 0s 3; }
+        @keyframes shake { 0%{transform:translateX(0)} 25%{transform:translateX(-2px)} 50%{transform:translateX(2px)} 75%{transform:translateX(-2px)} 100%{transform:translateX(0)} }
+        .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
     <header class="sticky top-0 z-50 bg-zinc-950/90 backdrop-blur-sm border-b border-zinc-800">
         <div class="container mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="/" class="text-zinc-300 hover:text-white transition-colors">
-                ← Início
-            </a>
-            <h1 class="text-lg font-semibold">
-                Loja <span class="text-gold-500">Afroworld</span>
-            </h1>
-            <a href="https://wa.me/5512991599185?text=Olá!%20Vim%20da%20Loja%20Afroworld%20e%20quero%20tirar%20dúvidas." 
-               target="_blank" 
+            <a href="/" class="text-zinc-300 hover:text-white transition-colors">← Início</a>
+            <h1 class="text-lg font-semibold">Loja <span class="text-gold-500">Afroworld</span></h1>
+            <a href="https://wa.me/5512991599185?text=Ol%C3%A1!%20Vim%20da%20Loja%20Afroworld%20e%20quero%20tirar%20d%C3%BAvidas."
+               target="_blank"
                class="bg-zinc-800 hover:bg-zinc-700 text-white px-3 py-1.5 rounded-lg text-sm font-medium transition-colors">
                 Falar no WhatsApp
             </a>
@@ -103,15 +66,34 @@
         <section class="container mx-auto px-4 py-8 md:py-12">
             <div class="max-w-2xl mx-auto text-center">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Sites luxuosos, prontos para vender</h2>
-                <p class="text-zinc-400 text-lg mb-8">Design de autoridade, SEO técnico e fechamento ágil via WhatsApp.</p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="#colecao" class="gradient-bg text-zinc-950 font-semibold px-6 py-3 rounded-lg hover:opacity-95 transition-opacity">
-                        Ver coleção
-                    </a>
-                    <a href="https://wa.me/5512991599185?text=Olá!%20Vim%20da%20Loja%20Afroworld%20e%20quero%20tirar%20dúvidas." 
-                       target="_blank" 
+                <p class="text-zinc-400 text-lg mb-6">Design de autoridade, SEO técnico e fechamento ágil via WhatsApp.</p>
+
+                <!-- CUPOM -->
+                <div class="max-w-md mx-auto bg-zinc-900 border border-zinc-800 rounded-xl p-3 sm:p-4">
+                    <label for="coupon-input" class="sr-only">Cupom de desconto</label>
+                    <div class="flex gap-2">
+                        <input id="coupon-input" type="text" inputmode="text" autocomplete="off"
+                               placeholder="Cupom (opcional)"
+                               class="flex-1 bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-gold-500"
+                               aria-describedby="coupon-feedback">
+                        <button id="apply-coupon-btn"
+                                class="gradient-bg text-zinc-950 font-semibold text-sm px-4 rounded-lg">
+                            Aplicar
+                        </button>
+                        <button id="clear-coupon-btn"
+                                class="hidden bg-zinc-800 hover:bg-zinc-700 text-white text-sm px-3 rounded-lg">
+                            Limpar
+                        </button>
+                    </div>
+                    <p id="coupon-feedback" class="mt-2 text-xs text-zinc-400"></p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-6">
+                    <a href="#colecao" class="gradient-bg text-zinc-950 font-semibold px-6 py-3 rounded-lg hover:opacity-95 transition-opacity">Ver coleção</a>
+                    <a href="https://wa.me/5512991599185?text=Ol%C3%A1!%20Vim%20da%20Loja%20Afroworld%20e%20quero%20tirar%20d%C3%BAvidas."
+                       target="_blank"
                        class="bg-zinc-800 hover:bg-zinc-700 text-white font-semibold px-6 py-3 rounded-lg transition-colors">
-                        Falar no WhatsApp
+                       Falar no WhatsApp
                     </a>
                 </div>
             </div>
@@ -132,7 +114,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="products-container">
-                <!-- Products will be inserted here by JavaScript -->
+                <!-- Products injected by JS -->
             </div>
         </section>
     </main>
@@ -142,8 +124,8 @@
             <a href="#colecao" class="flex-1 bg-zinc-800 hover:bg-zinc-700 text-white font-medium py-3 px-4 rounded-lg text-center transition-colors">
                 Ver Coleção
             </a>
-            <a href="https://wa.me/5512991599185?text=Olá!%20Vim%20da%20Loja%20Afroworld%20e%20quero%20tirar%20dúvidas." 
-               target="_blank" 
+            <a href="https://wa.me/5512991599185?text=Ol%C3%A1!%20Vim%20da%20Loja%20Afroworld%20e%20quero%20tirar%20d%C3%BAvidas."
+               target="_blank"
                class="flex-1 gradient-bg text-zinc-950 font-medium py-3 px-4 rounded-lg text-center hover:opacity-95 transition-opacity">
                 WhatsApp
             </a>
@@ -155,8 +137,8 @@
             <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
                 <div>
                     <h3 class="text-xl font-semibold mb-4">Fale com a Afroworld</h3>
-                    <a href="https://wa.me/5512991599185?text=Olá!%20Vim%20da%20Loja%20Afroworld%20e%20quero%20tirar%20dúvidas." 
-                       target="_blank" 
+                    <a href="https://wa.me/5512991599185?text=Ol%C3%A1!%20Vim%20da%20Loja%20Afroworld%20e%20quero%20tirar%20d%C3%BAvidas."
+                       target="_blank"
                        class="gradient-bg text-zinc-950 font-semibold px-6 py-3 rounded-lg inline-block hover:opacity-95 transition-opacity">
                         Abrir WhatsApp
                     </a>
@@ -177,58 +159,22 @@
     </footer>
 
     <script>
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+        // =========================
+        // CONFIGURAÇÕES DE CUPOM
+        // =========================
+        // Edite aqui seus cupons. Nomes não aparecem na UI.
+        const COUPONS = {
+            "AFROWORLD10": { type: "percent", value: 10 }, // 10%
+            // "PROMO50":   { type: "fixed",   value: 50 } // R$50 off
+        };
+        // Se true, envia o nome do cupom dentro da mensagem do WhatsApp
+        const ALLOW_COUPON_NAME_IN_MESSAGE = false;
 
-        // Check for discount in URL or localStorage
-        function getSpecialDiscountActive() {
-            // Check URL parameters
-            const urlParams = new URLSearchParams(window.location.search);
-            const couponParam = urlParams.get('cupom') || urlParams.get('coupon');
-            
-            if (couponParam) {
-                const normalizedCoupon = couponParam.toUpperCase().replace(/\s+/g, '');
-                if (normalizedCoupon === 'AFROWORLD10') {
-                    localStorage.setItem("aw_discount", "true");
-                    return true;
-                }
-            }
-            
-            // Check localStorage
-            return localStorage.getItem("aw_discount") === "true";
-        }
+        const LS_COUPON_KEY = "aw_coupon_code";
+        const LS_DISCOUNT_FLAG = "aw_discount"; // legado: mantido p/ compatibilidade
+        const WHATSAPP_NUMBER = "5512991599185";
 
-        const hasDiscount = getSpecialDiscountActive();
-
-        // Format price as BRL
-        function formatPrice(price) {
-            return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
-        }
-
-        // Calculate final price with discount
-        function getFinalPrice(price) {
-            return hasDiscount ? price * 0.9 : price;
-        }
-
-        // Generate WhatsApp message
-        function generateWhatsAppMessage(product) {
-            const finalPrice = getFinalPrice(product.price);
-            const currentUrl = encodeURIComponent(window.location.href);
-            
-            let message = `Olá! Quero comprar o site "${product.name}"%0A`;
-            message += `Valor: ${formatPrice(finalPrice)}${hasDiscount ? " (desconto especial aplicado)" : ""}%0A`;
-            message += `Condições: Hospedagem R$ 35/mês • Alterações R$ 45 por mudança%0A`;
-            message += `ID do produto: ${product.id}%0A`;
-            message += `Link da loja: ${currentUrl}%0A%0A`;
-            message += `Dados para emissão e próximos passos:%0A`;
-            message += `• Nome completo:%0A`;
-            message += `• E-mail:%0A`;
-            message += `• CPF/CNPJ:`;
-            
-            return `https://wa.me/5512991599185?text=${message}`;
-        }
-
-        // Product data
+        // Produtos
         const products = [
             {
                 id: "afroworld-pro",
@@ -274,126 +220,287 @@
             }
         ];
 
-        // Render products
-        const productsContainer = document.getElementById('products-container');
+        // Utilidades
+        const fmtBRL = (v) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
+        const norm = (s) => (s || "").toString().trim().toUpperCase().replace(/\s+/g, "");
 
-        products.forEach(product => {
-            const finalPrice = getFinalPrice(product.price);
-            const economy = product.price - finalPrice;
-            
-            const productCard = document.createElement('div');
-            productCard.className = 'gradient-border bg-zinc-900 rounded-xl p-1';
-            
-            productCard.innerHTML = `
-                <div class="bg-zinc-900 rounded-xl p-5 h-full flex flex-col">
-                    <div class="relative mb-5">
-                        <div class="image-placeholder aspect-video rounded-lg overflow-hidden">
-                            <span class="text-4xl">✨</span>
-                        </div>
-                        <span class="absolute top-3 right-3 bg-${product.tier === 'Premium' ? 'gold-500' : 'zinc-700'} text-${product.tier === 'Premium' ? 'zinc-900' : 'white'} text-xs font-bold px-2 py-1 rounded">
-                            ${product.tier}
-                        </span>
-                    </div>
-                    
-                    <h3 class="text-xl font-semibold mb-2">${product.name}</h3>
-                    <p class="text-zinc-400 text-sm mb-4">${product.blurb}</p>
-                    
-                    <div class="bg-zinc-800/50 rounded-lg p-3 mb-4">
-                        <p class="text-zinc-300 text-xs">Hospedagem R$ 35/mês • Alterações R$ 45 por mudança</p>
-                    </div>
-                    
-                    <div class="mb-5">
-                        ${hasDiscount ? `
-                            <div class="flex items-end gap-2">
-                                <span class="text-zinc-400 text-sm line-through">${formatPrice(product.price)}</span>
-                                <span class="text-gold-500 font-bold text-xl">${formatPrice(finalPrice)}</span>
+        function getCouponFromQuery() {
+            const p = new URLSearchParams(location.search);
+            return norm(p.get("cupom") || p.get("coupon"));
+        }
+
+        function getStoredCoupon() {
+            return norm(localStorage.getItem(LS_COUPON_KEY));
+        }
+
+        function setStoredCoupon(code) {
+            if (code) localStorage.setItem(LS_COUPON_KEY, code);
+            else localStorage.removeItem(LS_COUPON_KEY);
+        }
+
+        function isValidCoupon(code) {
+            return !!COUPONS[norm(code)];
+        }
+
+        function computeDiscountedPrice(base, code) {
+            const c = COUPONS[norm(code)];
+            if (!c) return { final: base, discount: 0 };
+            if (c.type === "percent") {
+                const discount = +(base * (c.value/100)).toFixed(2);
+                return { final: +(base - discount).toFixed(2), discount };
+            } else if (c.type === "fixed") {
+                const discount = Math.min(base, c.value);
+                return { final: +(base - discount).toFixed(2), discount };
+            }
+            return { final: base, discount: 0 };
+        }
+
+        function getActiveCoupon() {
+            // Prioridade: URL > localStorage (mantém compat. com "aw_discount" legado)
+            const fromURL = getCouponFromQuery();
+            if (isValidCoupon(fromURL)) {
+                setStoredCoupon(fromURL);
+                // compat: marcar flag antiga (não mais usada no cálculo)
+                localStorage.setItem(LS_DISCOUNT_FLAG, "true");
+                return fromURL;
+            }
+            const stored = getStoredCoupon();
+            if (isValidCoupon(stored)) return stored;
+
+            // LEGADO: se só tem flag antiga, ativa AFROWORLD10 automaticamente (se existir)
+            if (localStorage.getItem(LS_DISCOUNT_FLAG) === "true" && COUPONS["AFROWORLD10"]) {
+                setStoredCoupon("AFROWORLD10");
+                return "AFROWORLD10";
+            }
+            return "";
+        }
+
+        // Estado global simples
+        const state = { coupon: getActiveCoupon() };
+
+        // DOM refs
+        const productsContainer = document.getElementById('products-container');
+        const couponInput = document.getElementById('coupon-input');
+        const applyBtn = document.getElementById('apply-coupon-btn');
+        const clearBtn = document.getElementById('clear-coupon-btn');
+        const feedback = document.getElementById('coupon-feedback');
+
+        // Render dos cards
+        function renderProducts() {
+            productsContainer.innerHTML = "";
+            products.forEach(product => {
+                const { final, discount } = computeDiscountedPrice(product.price, state.coupon);
+                const hasDiscount = discount > 0;
+
+                const card = document.createElement('div');
+                card.className = 'gradient-border bg-zinc-900 rounded-xl p-1';
+
+                card.innerHTML = `
+                    <div class="bg-zinc-900 rounded-xl p-5 h-full flex flex-col">
+                        <div class="relative mb-5">
+                            <div class="image-placeholder aspect-video rounded-lg overflow-hidden">
+                                <span class="text-4xl" aria-hidden="true">✨</span>
                             </div>
-                            <div class="flex items-center gap-1 mt-1">
-                                <span class="text-green-400 text-xs">Desconto especial aplicado</span>
-                                <span class="text-zinc-400 text-xs">• Economize ${formatPrice(economy)}</span>
-                            </div>
-                        ` : `
-                            <span class="text-gold-500 font-bold text-xl">${formatPrice(product.price)}</span>
-                            <p class="text-zinc-400 text-xs mt-1">ou 1x no Pix via atendimento</p>
-                        `}
-                    </div>
-                    
-                    <div class="mt-auto space-y-3">
-                        <div class="grid grid-cols-2 gap-3">
-                            <a href="${product.preview}" target="_blank" class="bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-medium py-2.5 px-4 rounded-lg text-center transition-colors">
-                                Ver site
-                            </a>
-                            <a href="${generateWhatsAppMessage(product)}" target="_blank" class="gradient-bg text-zinc-950 text-sm font-medium py-2.5 px-4 rounded-lg text-center hover:opacity-95 transition-opacity">
-                                Comprar
-                            </a>
+                            <span class="absolute top-3 right-3 ${product.tier === 'Premium' ? 'bg-gold-500 text-zinc-900' : 'bg-zinc-700 text-white'} text-xs font-bold px-2 py-1 rounded">
+                                ${product.tier}
+                            </span>
                         </div>
-                        
-                        <div class="accordion">
-                            <button class="w-full flex items-center justify-between text-zinc-400 text-sm py-2">
-                                <span>Ver descrição completa</span>
-                                <svg class="accordion-icon w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                                </svg>
-                            </button>
-                            <div class="accordion-content">
-                                <div class="pt-3 border-t border-zinc-800">
-                                    <ul class="space-y-2 text-zinc-400 text-sm">
-                                        ${product.features.map(feature => `<li class="flex items-start">
-                                            <svg class="w-4 h-4 mt-0.5 mr-2 text-gold-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                            </svg>
-                                            ${feature}
-                                        </li>`).join('')}
-                                    </ul>
-                                    <div class="mt-4 text-zinc-400 text-sm space-y-3">
-                                        ${product.full_description.map(desc => `<p>• ${desc}</p>`).join('')}
+
+                        <h3 class="text-xl font-semibold mb-2">${product.name}</h3>
+                        <p class="text-zinc-400 text-sm mb-4">${product.blurb}</p>
+
+                        <div class="bg-zinc-800/50 rounded-lg p-3 mb-4">
+                            <p class="text-zinc-300 text-xs">Hospedagem R$ 35/mês • Alterações R$ 45 por mudança</p>
+                        </div>
+
+                        <div class="mb-5">
+                            ${hasDiscount ? `
+                                <div class="flex items-end gap-2">
+                                    <span class="text-zinc-400 text-sm line-through">${fmtBRL(product.price)}</span>
+                                    <span class="text-gold-500 font-bold text-xl">${fmtBRL(final)}</span>
+                                </div>
+                                <div class="flex items-center gap-1 mt-1">
+                                    <span class="text-green-400 text-xs">Desconto aplicado</span>
+                                    <span class="text-zinc-400 text-xs">• Economize ${fmtBRL(discount)}</span>
+                                </div>
+                            ` : `
+                                <span class="text-gold-500 font-bold text-xl">${fmtBRL(product.price)}</span>
+                                <p class="text-zinc-400 text-xs mt-1">ou 1x no Pix via atendimento</p>
+                            `}
+                        </div>
+
+                        <div class="mt-auto space-y-3">
+                            <div class="grid grid-cols-2 gap-3">
+                                <a href="${product.preview}" target="_blank"
+                                   class="bg-zinc-800 hover:bg-zinc-700 text-white text-sm font-medium py-2.5 px-4 rounded-lg text-center transition-colors">
+                                    Ver site
+                                </a>
+                                <a href="#" data-product-id="${product.id}"
+                                   class="buy-btn gradient-bg text-zinc-950 text-sm font-medium py-2.5 px-4 rounded-lg text-center hover:opacity-95 transition-opacity">
+                                    Comprar
+                                </a>
+                            </div>
+
+                            <div class="accordion">
+                                <button class="w-full flex items-center justify-between text-zinc-400 text-sm py-2">
+                                    <span>Ver descrição completa</span>
+                                    <svg class="accordion-icon w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    </svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="pt-3 border-t border-zinc-800">
+                                        <ul class="space-y-2 text-zinc-400 text-sm">
+                                            ${product.features.map(f => `
+                                                <li class="flex items-start">
+                                                    <svg class="w-4 h-4 mt-0.5 mr-2 text-gold-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                    </svg>${f}
+                                                </li>
+                                            `).join('')}
+                                        </ul>
+                                        <div class="mt-4 text-zinc-400 text-sm space-y-3">
+                                            ${product.full_description.map(d => `<p>• ${d}</p>`).join('')}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            `;
-            
-            productsContainer.appendChild(productCard);
-        });
+                `;
 
-        // Accordion functionality
-        document.querySelectorAll('.accordion').forEach(accordion => {
-            const button = accordion.querySelector('button');
-            
-            button.addEventListener('click', () => {
-                accordion.classList.toggle('active');
+                productsContainer.appendChild(card);
             });
+
+            // Acordeão
+            document.querySelectorAll('.accordion').forEach(acc => {
+                const btn = acc.querySelector('button');
+                btn.addEventListener('click', () => acc.classList.toggle('active'));
+            });
+
+            // Botões de compra → WhatsApp
+            document.querySelectorAll('.buy-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const id = btn.getAttribute('data-product-id');
+                    const product = products.find(p => p.id === id);
+                    if (!product) return;
+
+                    const { final, discount } = computeDiscountedPrice(product.price, state.coupon);
+                    const hasDiscount = discount > 0;
+
+                    const currentUrl = encodeURIComponent(window.location.href);
+                    let text = `Olá! Quero comprar o site "${product.name}"%0A`;
+                    text += `Valor base: ${encodeURIComponent(fmtBRL(product.price))}%0A`;
+                    if (hasDiscount) {
+                        text += `Desconto: ${encodeURIComponent(fmtBRL(discount))}%0A`;
+                        text += `Total com desconto: ${encodeURIComponent(fmtBRL(final))}%0A`;
+                        if (ALLOW_COUPON_NAME_IN_MESSAGE && state.coupon) {
+                            text += `Cupom: ${encodeURIComponent(state.coupon)}%0A`;
+                        }
+                    } else {
+                        text += `Total: ${encodeURIComponent(fmtBRL(product.price))}%0A`;
+                    }
+                    text += `Condições: Hospedagem R$ 35/mês • Alterações R$ 45 por mudança%0A`;
+                    text += `ID do produto: ${encodeURIComponent(product.id)}%0A`;
+                    text += `Link da loja: ${currentUrl}%0A%0A`;
+                    text += `Dados para emissão e próximos passos:%0A`;
+                    text += `• Nome completo:%0A`;
+                    text += `• E-mail:%0A`;
+                    text += `• CPF/CNPJ:`;
+
+                    const wa = `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+                    window.open(wa, '_blank');
+                });
+            });
+        }
+
+        // Cupom UI
+        function updateCouponUI() {
+            const code = state.coupon;
+            if (isValidCoupon(code)) {
+                couponInput.value = code;
+                feedback.textContent = "Cupom aplicado.";
+                feedback.className = "mt-2 text-xs text-green-400";
+                clearBtn.classList.remove('hidden');
+            } else if (code) {
+                feedback.textContent = "Cupom inválido.";
+                feedback.className = "mt-2 text-xs text-red-400";
+                clearBtn.classList.add('hidden');
+            } else {
+                couponInput.value = "";
+                feedback.textContent = "Dica: se tiver um cupom, aplique aqui para ganhar desconto.";
+                feedback.className = "mt-2 text-xs text-zinc-400";
+                clearBtn.classList.add('hidden');
+            }
+        }
+
+        function applyCoupon(fromInput = false) {
+            const code = norm(couponInput.value);
+            if (!code) {
+                // Remover cupom se vazio
+                state.coupon = "";
+                setStoredCoupon("");
+                updateCouponUI();
+                renderProducts();
+                return;
+            }
+            if (!isValidCoupon(code)) {
+                feedback.textContent = "Cupom inválido.";
+                feedback.className = "mt-2 text-xs text-red-400";
+                couponInput.classList.add('shake');
+                setTimeout(()=>couponInput.classList.remove('shake'), 300);
+                return;
+            }
+            state.coupon = code;
+            setStoredCoupon(code);
+            updateCouponUI();
+            renderProducts();
+        }
+
+        function clearCoupon() {
+            state.coupon = "";
+            setStoredCoupon("");
+            // limpar query param visualmente sem recarregar
+            const url = new URL(window.location);
+            url.searchParams.delete('cupom'); url.searchParams.delete('coupon');
+            window.history.replaceState({}, '', url);
+            updateCouponUI();
+            renderProducts();
+        }
+
+        // Eventos cupom
+        applyBtn.addEventListener('click', () => applyCoupon(true));
+        clearBtn.addEventListener('click', clearCoupon);
+        couponInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') applyCoupon(true);
         });
 
-        // Add JSON-LD structured data
+        // Footer year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // JSON-LD (com preço já com desconto, se houver)
         function addStructuredData() {
             const script = document.createElement('script');
             script.type = 'application/ld+json';
-            
             const structuredData = {
                 "@context": "https://schema.org",
                 "@type": "ItemList",
-                "itemListElement": products.map((product, index) => {
-                    const finalPrice = getFinalPrice(product.price);
-                    
+                "itemListElement": products.map((product, i) => {
+                    const { final } = computeDiscountedPrice(product.price, state.coupon);
                     return {
                         "@type": "ListItem",
-                        "position": index + 1,
+                        "position": i + 1,
                         "item": {
                             "@type": "Product",
                             "name": product.name,
                             "sku": product.id,
                             "description": product.blurb,
-                            "brand": {
-                                "@type": "Brand",
-                                "name": "Afroworld"
-                            },
+                            "brand": { "@type": "Brand", "name": "Afroworld" },
                             "offers": {
                                 "@type": "Offer",
                                 "priceCurrency": "BRL",
-                                "price": finalPrice,
+                                "price": final,
                                 "availability": "https://schema.org/InStock",
                                 "url": window.location.href
                             }
@@ -401,11 +508,13 @@
                     };
                 })
             };
-            
             script.textContent = JSON.stringify(structuredData);
             document.head.appendChild(script);
         }
 
+        // Inicialização
+        updateCouponUI();
+        renderProducts();
         addStructuredData();
     </script>
 </body>
