@@ -31,15 +31,18 @@
     <style>
         body { font-family: 'Poppins', sans-serif; background:#0a0a0a; color:#f4f4f5; }
         .gradient-bg { background: linear-gradient(135deg, #d4af37 0%, #b58b2b 100%); }
-        .gradient-border { position: relative; }
-        .gradient-border::before {
-            content:''; position:absolute; inset:0; border-radius:0.75rem; padding:1px;
+
+        /* ✅ Borda em degradê sem mask (corrige overlay amarelo no iOS/Safari) */
+        .gradient-border{
+            border-radius: 0.75rem;      /* 12px */
+            padding: 1px;                /* espessura da borda */
             background: linear-gradient(135deg, rgba(212,175,55,.5) 0%, rgba(181,139,43,.5) 100%);
-            -webkit-mask: linear-gradient(#0000 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor; mask-composite: exclude; pointer-events:none;
         }
-        .image-placeholder { display:flex; align-items:center; justify-content:center;
-            background: linear-gradient(135deg, rgba(212,175,55,.08) 0%, rgba(181,139,43,.08) 100%); }
+
+        .image-placeholder {
+            display:flex; align-items:center; justify-content:center;
+            background: linear-gradient(135deg, rgba(212,175,55,.08) 0%, rgba(181,139,43,.08) 100%);
+        }
         .accordion-content { max-height:0; overflow:hidden; transition:max-height .3s ease-out; }
         .accordion.active .accordion-content { max-height:500px; }
         .accordion.active .accordion-icon { transform: rotate(180deg); }
@@ -162,16 +165,13 @@
         // =========================
         // CONFIGURAÇÕES DE CUPOM
         // =========================
-        // Edite aqui seus cupons. Nomes não aparecem na UI.
         const COUPONS = {
-            "AFROWORLD10": { type: "percent", value: 10 }, // 10%
-            // "PROMO50":   { type: "fixed",   value: 50 } // R$50 off
+            "AFROWORLD10": { type: "percent", value: 10 } // 10% (troque se quiser)
+            // "PROMO50":   { type: "fixed",   value: 50 } // R$50 off (exemplo)
         };
-        // Se true, envia o nome do cupom dentro da mensagem do WhatsApp
-        const ALLOW_COUPON_NAME_IN_MESSAGE = false;
-
+        const ALLOW_COUPON_NAME_IN_MESSAGE = false; // não vazar nome do cupom na mensagem
         const LS_COUPON_KEY = "aw_coupon_code";
-        const LS_DISCOUNT_FLAG = "aw_discount"; // legado: mantido p/ compatibilidade
+        const LS_DISCOUNT_FLAG = "aw_discount"; // legado
         const WHATSAPP_NUMBER = "5512991599185";
 
         // Produtos
@@ -228,19 +228,9 @@
             const p = new URLSearchParams(location.search);
             return norm(p.get("cupom") || p.get("coupon"));
         }
-
-        function getStoredCoupon() {
-            return norm(localStorage.getItem(LS_COUPON_KEY));
-        }
-
-        function setStoredCoupon(code) {
-            if (code) localStorage.setItem(LS_COUPON_KEY, code);
-            else localStorage.removeItem(LS_COUPON_KEY);
-        }
-
-        function isValidCoupon(code) {
-            return !!COUPONS[norm(code)];
-        }
+        function getStoredCoupon() { return norm(localStorage.getItem(LS_COUPON_KEY)); }
+        function setStoredCoupon(code) { code ? localStorage.setItem(LS_COUPON_KEY, code) : localStorage.removeItem(LS_COUPON_KEY); }
+        function isValidCoupon(code) { return !!COUPONS[norm(code)]; }
 
         function computeDiscountedPrice(base, code) {
             const c = COUPONS[norm(code)];
@@ -248,26 +238,21 @@
             if (c.type === "percent") {
                 const discount = +(base * (c.value/100)).toFixed(2);
                 return { final: +(base - discount).toFixed(2), discount };
-            } else if (c.type === "fixed") {
+            } else {
                 const discount = Math.min(base, c.value);
                 return { final: +(base - discount).toFixed(2), discount };
             }
-            return { final: base, discount: 0 };
         }
 
         function getActiveCoupon() {
-            // Prioridade: URL > localStorage (mantém compat. com "aw_discount" legado)
             const fromURL = getCouponFromQuery();
             if (isValidCoupon(fromURL)) {
                 setStoredCoupon(fromURL);
-                // compat: marcar flag antiga (não mais usada no cálculo)
-                localStorage.setItem(LS_DISCOUNT_FLAG, "true");
+                localStorage.setItem(LS_DISCOUNT_FLAG, "true"); // compat
                 return fromURL;
             }
             const stored = getStoredCoupon();
             if (isValidCoupon(stored)) return stored;
-
-            // LEGADO: se só tem flag antiga, ativa AFROWORLD10 automaticamente (se existir)
             if (localStorage.getItem(LS_DISCOUNT_FLAG) === "true" && COUPONS["AFROWORLD10"]) {
                 setStoredCoupon("AFROWORLD10");
                 return "AFROWORLD10";
@@ -275,17 +260,17 @@
             return "";
         }
 
-        // Estado global simples
+        // Estado
         const state = { coupon: getActiveCoupon() };
 
-        // DOM refs
+        // DOM
         const productsContainer = document.getElementById('products-container');
         const couponInput = document.getElementById('coupon-input');
         const applyBtn = document.getElementById('apply-coupon-btn');
         const clearBtn = document.getElementById('clear-coupon-btn');
         const feedback = document.getElementById('coupon-feedback');
 
-        // Render dos cards
+        // Render cards
         function renderProducts() {
             productsContainer.innerHTML = "";
             products.forEach(product => {
@@ -293,7 +278,8 @@
                 const hasDiscount = discount > 0;
 
                 const card = document.createElement('div');
-                card.className = 'gradient-border bg-zinc-900 rounded-xl p-1';
+                // ✅ wrapper sem bg/p-1; usa padding 1px (tailwind) para a borda
+                card.className = 'gradient-border rounded-xl p-[1px]';
 
                 card.innerHTML = `
                     <div class="bg-zinc-900 rounded-xl p-5 h-full flex flex-col">
@@ -435,10 +421,9 @@
             }
         }
 
-        function applyCoupon(fromInput = false) {
+        function applyCoupon() {
             const code = norm(couponInput.value);
             if (!code) {
-                // Remover cupom se vazio
                 state.coupon = "";
                 setStoredCoupon("");
                 updateCouponUI();
@@ -461,7 +446,6 @@
         function clearCoupon() {
             state.coupon = "";
             setStoredCoupon("");
-            // limpar query param visualmente sem recarregar
             const url = new URL(window.location);
             url.searchParams.delete('cupom'); url.searchParams.delete('coupon');
             window.history.replaceState({}, '', url);
@@ -470,16 +454,14 @@
         }
 
         // Eventos cupom
-        applyBtn.addEventListener('click', () => applyCoupon(true));
-        clearBtn.addEventListener('click', clearCoupon);
-        couponInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') applyCoupon(true);
-        });
+        document.getElementById('apply-coupon-btn').addEventListener('click', applyCoupon);
+        document.getElementById('clear-coupon-btn').addEventListener('click', clearCoupon);
+        document.getElementById('coupon-input').addEventListener('keydown', (e) => { if (e.key === 'Enter') applyCoupon(); });
 
         // Footer year
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // JSON-LD (com preço já com desconto, se houver)
+        // JSON-LD com preço final (após cupom)
         function addStructuredData() {
             const script = document.createElement('script');
             script.type = 'application/ld+json';
@@ -513,9 +495,12 @@
         }
 
         // Inicialização
-        updateCouponUI();
-        renderProducts();
-        addStructuredData();
+        const init = () => {
+            updateCouponUI();
+            renderProducts();
+            addStructuredData();
+        };
+        init();
     </script>
 </body>
 </html>
