@@ -3,179 +3,78 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pack Viral — Posts que vendem sem esforço</title>
-  <meta name="description" content="Templates virais prontos, animações e designs testados para engajar e vender.">
+  <title>Pack Viral — Tudo por R$ 27</title>
+  <meta name="description" content="1 mês de filmes, séries e canais de TV (30.000+ conteúdos) + pack com 500+ cortes virais para você criar sua página e começar a viralizar.">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0b0b0c;
-      --card:#121216;
-      --muted:#9da3ae;
-      --text:#ffffff;
-      --brand:#ffd84d;      /* amarelo destaque */
-      --brand-2:#ff7a18;    /* laranja suave para gradiente */
-      --ok:#3bd671;
-      --danger:#ff4d4d;
-      --shadow: 0 10px 30px rgba(0,0,0,.45);
-      --radius:18px;
+      --bg:#0b0b0c; --card:#121216; --muted:#9da3ae; --text:#ffffff;
+      --brand:#ffd84d; --brand-2:#ff7a18; --ok:#3bd671; --shadow:0 10px 30px rgba(0,0,0,.45); --radius:18px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;
-      background: radial-gradient(1200px 600px at 70% -10%, #222 0%, transparent 60%) , var(--bg);
-      color:var(--text);
-      -webkit-font-smoothing:antialiased;
-      overflow-x:hidden;
-    }
-    /* Header */
-    .header{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(1.4) blur(10px);
-      background: linear-gradient(180deg, rgba(15,15,18,.75), rgba(15,15,18,.35));
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial;background: radial-gradient(1200px 600px at 70% -10%, #222 0%, transparent 60%), var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    .header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(1.4) blur(10px);background:linear-gradient(180deg,rgba(15,15,18,.75),rgba(15,15,18,.35));border-bottom:1px solid rgba(255,255,255,.06)}
     .wrap{max-width:1120px;margin:auto;padding:0 18px}
     .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
     .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.3px}
-    .brand-badge{
-      width:34px;height:34px;border-radius:10px;
-      background: conic-gradient(from 180deg,var(--brand),var(--brand-2),var(--brand));
-      box-shadow:0 8px 20px rgba(255,216,77,.25);
-    }
-    .nav-cta{
-      display:flex;gap:10px;align-items:center;
-    }
-    .btn{
-      --b: var(--brand);
-      display:inline-flex;align-items:center;justify-content:center;
-      gap:10px;height:44px;padding:0 16px;border-radius:12px;
-      color:#000;font-weight:700;text-decoration:none;
-      background:#000;border:2px solid var(--b);
-      position:relative;transition:.25s transform,.25s box-shadow;
-      box-shadow:0 6px 16px rgba(255,216,77,.14);
-    }
+    .brand-badge{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 180deg,var(--brand),var(--brand-2),var(--brand));box-shadow:0 8px 20px rgba(255,216,77,.25)}
+    .btn{--b:var(--brand);display:inline-flex;align-items:center;justify-content:center;gap:10px;height:44px;padding:0 16px;border-radius:12px;color:#000;font-weight:700;text-decoration:none;background:#000;border:2px solid var(--b);position:relative;transition:.25s transform,.25s box-shadow;box-shadow:0 6px 16px rgba(255,216,77,.14)}
     .btn:hover{transform:translateY(-1px);box-shadow:0 10px 22px rgba(255,216,77,.25)}
-    .btn-outline{
-      background:transparent;color:var(--text);border-color:#2e2e36;
-      box-shadow:none;
-    }
+    .btn-outline{background:transparent;color:var(--text);border-color:#2e2e36;box-shadow:none}
     .btn-outline:hover{border-color:#444}
-    /* Hero */
     .hero{position:relative;padding:72px 0 40px;overflow:hidden}
-    .glow{
-      position:absolute;inset:-10% -10% auto;height:360px;filter:blur(60px);
-      background: radial-gradient(600px 220px at 20% 10%, rgba(255,216,77,.35), transparent 55%),
-                  radial-gradient(600px 220px at 80% 0%, rgba(255,122,24,.25), transparent 55%);
-      pointer-events:none;opacity:.9;
-    }
+    .glow{position:absolute;inset:-10% -10% auto;height:360px;filter:blur(60px);background: radial-gradient(600px 220px at 20% 10%, rgba(255,216,77,.35), transparent 55%), radial-gradient(600px 220px at 80% 0%, rgba(255,122,24,.25), transparent 55%);pointer-events:none;opacity:.9}
     .hero-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
     @media(min-width:980px){.hero-grid{grid-template-columns:1.15fr .85fr}}
-    .badge{
-      display:inline-flex;gap:8px;align-items:center;
-      padding:8px 12px;border-radius:999px;background:#141419;border:1px solid rgba(255,255,255,.07);
-      font-weight:600;font-size:.82rem;color:var(--muted);
-      box-shadow:var(--shadow); transform:translateZ(0)
-    }
+    .badge{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border-radius:999px;background:#141419;border:1px solid rgba(255,255,255,.07);font-weight:600;font-size:.82rem;color:var(--muted);box-shadow:var(--shadow)}
     .badge .dot{width:8px;height:8px;border-radius:999px;background:var(--ok);box-shadow:0 0 0 6px rgba(59,214,113,.15);animation:pulse 2.2s infinite}
     @keyframes pulse{0%{box-shadow:0 0 0 4px rgba(59,214,113,.18)}70%{box-shadow:0 0 0 14px rgba(59,214,113,0)}100%{box-shadow:0 0 0 4px rgba(59,214,113,0)}}
-    .title{
-      font-size:clamp(2.2rem, 3.6vw + .6rem, 4.2rem);
-      line-height:1.05;font-weight:800;letter-spacing:-.02em;margin:14px 0 12px;
-      background:linear-gradient(180deg,#fff, #eaeaea 60%, #c9c9c9);-webkit-background-clip:text;color:transparent;
-    }
-    .title .under{
-      background:linear-gradient(90deg,var(--brand),var(--brand-2));
-      -webkit-background-clip:text;color:transparent;position:relative;white-space:nowrap;
-    }
-    .title .under:after{
-      content:""; position:absolute; left:0; right:0; bottom:-6px; height:8px; border-radius:999px;
-      background:linear-gradient(90deg,rgba(255,216,77,.45),rgba(255,122,24,.45));
-      filter:blur(8px); opacity:.9;
-      animation:shine 2.4s ease-in-out infinite;
-    }
+    .title{font-size:clamp(2.2rem, 3.6vw + .6rem, 4.2rem);line-height:1.05;font-weight:800;letter-spacing:-.02em;margin:14px 0 12px;background:linear-gradient(180deg,#fff,#eaeaea 60%,#c9c9c9);-webkit-background-clip:text;color:transparent}
+    .title .under{background:linear-gradient(90deg,var(--brand),var(--brand-2));-webkit-background-clip:text;color:transparent;position:relative;white-space:nowrap}
+    .title .under:after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:8px;border-radius:999px;background:linear-gradient(90deg,rgba(255,216,77,.45),rgba(255,122,24,.45));filter:blur(8px);opacity:.9;animation:shine 2.4s ease-in-out infinite}
     @keyframes shine{0%{opacity:.3}50%{opacity:.9}100%{opacity:.3}}
-    .sub{color:var(--muted);font-size:1.04rem;line-height:1.6;max-width:620px}
+    .sub{color:var(--muted);font-size:1.04rem;line-height:1.6;max-width:680px}
     .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
-    .hero-media{
-      position:relative;border-radius:var(--radius);background:linear-gradient(180deg,#141419,#0f0f12);
-      border:1px solid rgba(255,255,255,.08); overflow:hidden; box-shadow:0 14px 40px rgba(0,0,0,.45);
-      transform-style:preserve-3d; perspective:1000px;
-    }
-    .media-inner{
-      aspect-ratio:16/10; display:grid; place-items:center; position:relative; overflow:hidden;
-    }
+    .hero-media{position:relative;border-radius:var(--radius);background:linear-gradient(180deg,#141419,#0f0f12);border:1px solid rgba(255,255,255,.08);overflow:hidden;box-shadow:0 14px 40px rgba(0,0,0,.45);transform-style:preserve-3d;perspective:1000px}
+    .media-inner{aspect-ratio:16/10;display:grid;place-items:center;position:relative;overflow:hidden}
     .media-inner img{width:100%;height:100%;object-fit:cover;opacity:.92;transform:scale(1.02)}
-    .media-float{
-      position:absolute; inset:auto 16px 16px auto; background:#0f0f12; border:1px solid rgba(255,255,255,.08);
-      padding:10px 14px; border-radius:14px; display:flex; align-items:center; gap:10px; box-shadow:var(--shadow); transform:translateZ(50px);
-      animation:float 6s ease-in-out infinite;
-    }
+    .media-float{position:absolute;inset:auto 16px 16px auto;background:#0f0f12;border:1px solid rgba(255,255,255,.08);padding:10px 14px;border-radius:14px;display:flex;align-items:center;gap:10px;box-shadow:var(--shadow);transform:translateZ(50px);animation:float 6s ease-in-out infinite}
     @keyframes float{0%,100%{transform:translateZ(50px) translateY(0)}50%{transform:translateZ(50px) translateY(-6px)}}
     .kpi{font-weight:800}
-    /* Marquee */
-    .marquee{
-      margin:14px 0 6px; border-top:1px dashed rgba(255,255,255,.08); border-bottom:1px dashed rgba(255,255,255,.08);
-      overflow:hidden; mask-image:linear-gradient(90deg,transparent 0, #000 12%, #000 88%, transparent 100%);
-    }
-    .marquee-track{display:flex;gap:26px;padding:12px 0; animation:roll 18s linear infinite}
+    .marquee{margin:14px 0 6px;border-top:1px dashed rgba(255,255,255,.08);border-bottom:1px dashed rgba(255,255,255,.08);overflow:hidden;mask-image:linear-gradient(90deg,transparent 0, #000 12%, #000 88%, transparent 100%)}
+    .marquee-track{display:flex;gap:26px;padding:12px 0;animation:roll 18s linear infinite}
     .pill{padding:8px 12px;background:#121218;border:1px solid rgba(255,255,255,.08);border-radius:999px;color:#d9d9dc;font-size:.9rem;white-space:nowrap}
     @keyframes roll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    /* Sections */
     section{padding:64px 0}
     .h2{font-size:clamp(1.6rem, 1.4vw + 1rem, 2.1rem);font-weight:800;margin:0 0 14px}
     .muted{color:var(--muted)}
-    .grid-3{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:860px){.grid-3{grid-template-columns:repeat(3,1fr)}}
-    .card{
-      background:linear-gradient(180deg,#131318,#101015);
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:16px;padding:18px;box-shadow:var(--shadow);
-      transform:translateZ(0); transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-    }
-    .card:hover{transform:translateY(-4px); box-shadow:0 18px 40px rgba(0,0,0,.55); border-color:rgba(255,216,77,.22)}
-    .card h3{margin:6px 0 8px; font-size:1.14rem}
+    .grid-2{display:grid;grid-template-columns:1fr;gap:16px}
+    @media(min-width:860px){.grid-2{grid-template-columns:repeat(2,1fr)}}
+    .card{background:linear-gradient(180deg,#131318,#101015);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px;box-shadow:var(--shadow);transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.55);border-color:rgba(255,216,77,.22)}
+    .card h3{margin:6px 0 8px;font-size:1.14rem}
     .chip{display:inline-block;font-size:.78rem;color:#111;font-weight:800;background:linear-gradient(90deg,var(--brand),var(--brand-2));padding:6px 10px;border-radius:999px}
     .list{margin:10px 0 0;padding:0 0 0 18px;color:#d9d9de}
-    /* CTA block */
-    .cta-big{
-      margin-top:10px; padding:22px; border-radius:18px; position:relative; overflow:hidden;
-      background:linear-gradient(180deg,#121216,#0d0d10);
-      border:1px solid rgba(255,255,255,.08);
-    }
-    .cta-big:before{
-      content:""; position:absolute; inset:-2px; border-radius:inherit; padding:1px;
-      background:conic-gradient(from 0deg, rgba(255,216,77,.8), rgba(255,122,24,.7), rgba(255,216,77,.8));
-      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-      -webkit-mask-composite: xor; mask-composite: exclude; animation:spin 6s linear infinite;
-    }
+    .cta-big{margin-top:10px;padding:22px;border-radius:18px;position:relative;overflow:hidden;background:linear-gradient(180deg,#121216,#0d0d10);border:1px solid rgba(255,255,255,.08)}
+    .cta-big:before{content:"";position:absolute;inset:-2px;border-radius:inherit;padding:1px;background:conic-gradient(from 0deg, rgba(255,216,77,.8), rgba(255,122,24,.7), rgba(255,216,77,.8));-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:spin 6s linear infinite}
     @keyframes spin{to{transform:rotate(1turn)}}
-    /* Steps */
     .steps{display:grid;gap:16px}
     .step{display:flex;gap:14px;align-items:flex-start}
     .n{min-width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:800;background:#1a1a22;border:1px solid rgba(255,255,255,.08)}
-    /* FAQ */
     details{background:#121218;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px}
     summary{cursor:pointer;font-weight:700}
     details p{color:#d7d7da}
-    /* Toast (prova social) */
-    .toast{
-      position:fixed; top:16px; left:50%; transform:translate(-50%,-80px);
-      background:#0f0f12;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:12px 14px;display:flex;gap:12px;align-items:center;
-      box-shadow:var(--shadow); opacity:0; transition:.5s ease; z-index:60; max-width:92vw
-    }
-    .toast.show{transform:translate(-50%,0); opacity:1}
-    .badge-ig{width:28px;height:28px;border-radius:8px;background:radial-gradient(circle at 30% 30%,#fff 0 8%,transparent 9%), 
-      conic-gradient(#405de6 0 25%, #5851db 0 50%, #833ab4 0 75%, #e1306c 0 100%);}
-    /* Reveal on scroll */
-    .reveal{opacity:0; transform:translateY(12px); transition: .6s ease}
-    .reveal.in{opacity:1; transform:none}
-    /* Footer */
+    .toast{position:fixed;top:16px;left:50%;transform:translate(-50%,-80px);background:#0f0f12;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:12px 14px;display:flex;gap:12px;align-items:center;box-shadow:var(--shadow);opacity:0;transition:.5s ease;z-index:60;max-width:92vw}
+    .toast.show{transform:translate(-50%,0);opacity:1}
+    .badge-ig{width:28px;height:28px;border-radius:8px;background:radial-gradient(circle at 30% 30%,#fff 0 8%,transparent 9%),conic-gradient(#405de6 0 25%, #5851db 0 50%, #833ab4 0 75%, #e1306c 0 100%)}
+    .reveal{opacity:0;transform:translateY(12px);transition:.6s ease}
+    .reveal.in{opacity:1;transform:none}
     footer{padding:40px 0;color:#a7a7ad;font-size:.92rem;border-top:1px solid rgba(255,255,255,.06)}
-    /* Utilities */
     .center{text-align:center}
+    .price{font-size:2.4rem;font-weight:900;letter-spacing:-.02em}
+    .strike{color:#9aa0aa;text-decoration:line-through;font-weight:700;margin-right:8px}
+    .tagline{display:inline-block;margin-left:8px;font-weight:800;color:#111;background:linear-gradient(90deg,var(--brand),var(--brand-2));padding:6px 10px;border-radius:999px}
   </style>
 </head>
 <body>
@@ -185,9 +84,8 @@
         <span class="brand-badge" aria-hidden="true"></span>
         <span>Pack <span style="color:var(--brand)">Viral</span></span>
       </div>
-      <nav class="nav-cta">
-        <a class="btn-outline btn" href="#planos">Ver planos</a>
-        <a class="btn" href="###LINK_DE_COMPRA###">Quero agora</a>
+      <nav>
+        <a class="btn" href="###LINK_DE_COMPRA###">Garantir por R$ 27</a>
       </nav>
     </div>
   </header>
@@ -197,87 +95,80 @@
       <div class="glow"></div>
       <div class="wrap hero-grid">
         <div>
-          <span class="badge"><span class="dot"></span> Atualizado semanalmente</span>
+          <span class="badge"><span class="dot"></span> Oferta completa — acesso imediato</span>
           <h1 class="title">
-            Templates <span class="under">virais</span> com animações e CSS
-            para aumentar seu alcance e <span class="under">vendas</span>.
+            Tudo o que você precisa para <span class="under">viralizar</span> por
+            <span class="under">R$ 27</span>.
           </h1>
-          <p class="sub">Receba um pack pronto com posts animados, capas que chamam clique e modelos de descrição testados. Perfeito para acelerar seu conteúdo e transformar visualizações em conversões.</p>
+          <p class="sub">
+            Você leva <strong>1 mês de filmes, séries e canais de TV</strong> (mais de <strong>30 mil conteúdos</strong>)
+            <span class="tagline">+ 500+ cortes virais</span> para criar sua página de filmes e
+            começar a bombar nas redes.
+          </p>
           <div class="cta">
-            <a class="btn" href="###LINK_DE_COMPRA###">Garantir meu pack</a>
-            <a class="btn btn-outline" href="#como-funciona">Como funciona</a>
+            <a class="btn" href="###LINK_DE_COMPRA###">Quero por R$ 27</a>
+            <a class="btn btn-outline" href="#o-que-inclui">O que está incluso</a>
           </div>
           <div class="marquee">
             <div class="marquee-track">
-              <span class="pill">+1.200 criadores usando</span>
-              <span class="pill">Formatos testados em Reels & Shorts</span>
-              <span class="pill">Atualizações incluídas</span>
-              <span class="pill">Arquivos prontos para editar</span>
-              <span class="pill">Suporte direto no WhatsApp</span>
-              <span class="pill">Direitos de uso comercial</span>
-              <!-- duplica para efeito infinito -->
-              <span class="pill">+1.200 criadores usando</span>
-              <span class="pill">Formatos testados em Reels & Shorts</span>
-              <span class="pill">Atualizações incluídas</span>
-              <span class="pill">Arquivos prontos para editar</span>
-              <span class="pill">Suporte direto no WhatsApp</span>
-              <span class="pill">Direitos de uso comercial</span>
+              <span class="pill">1 mês incluso (streaming + TV)</span>
+              <span class="pill">30.000+ títulos</span>
+              <span class="pill">500+ cortes virais</span>
+              <span class="pill">Comece a vender em dias</span>
+              <span class="pill">Suporte por WhatsApp</span>
+              <span class="pill">Licença de uso comercial</span>
+              <span class="pill">1 mês incluso (streaming + TV)</span>
+              <span class="pill">30.000+ títulos</span>
+              <span class="pill">500+ cortes virais</span>
+              <span class="pill">Comece a vender em dias</span>
+              <span class="pill">Suporte por WhatsApp</span>
+              <span class="pill">Licença de uso comercial</span>
             </div>
           </div>
         </div>
 
         <div class="hero-media reveal">
           <div class="media-inner">
-            <img src="###URL_DA_IMAGEM_DEMO###" alt="Prévia dos templates do Pack Viral" />
+            <img src="###URL_DA_IMAGEM_DEMO###" alt="Prévia do Pack Viral" />
             <div class="media-float">
-              <span class="chip">Novo</span>
-              <span class="kpi">+37% de CTR</span>
+              <span class="chip">Único plano</span>
+              <span class="kpi">R$ 27</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="beneficios">
+    <section id="o-que-inclui">
       <div class="wrap">
-        <h2 class="h2">Por que esse pack converte mais?</h2>
-        <p class="muted">Design pensado para parar o scroll, textos de impacto e micro-animações que guiam o olhar até o CTA.</p>
-        <div class="grid-3" style="margin-top:14px">
+        <h2 class="h2">O que está incluso</h2>
+        <div class="grid-2" style="margin-top:14px">
           <div class="card reveal">
-            <span class="chip">Hook forte</span>
-            <h3>Primeiros 2–3s que grudam</h3>
+            <span class="chip">Streaming + TV</span>
+            <h3>1 mês de acesso • 30.000+ conteúdos</h3>
             <ul class="list">
-              <li>Headlines com prova + benefício</li>
-              <li>Cortes de cor e zoom guiado</li>
-              <li>Variante estática e animada</li>
+              <li>Filmes e séries atualizados</li>
+              <li>Canais de TV ao vivo</li>
+              <li>Guia rápido de uso (passo a passo)</li>
             </ul>
           </div>
           <div class="card reveal">
-            <span class="chip">Identidade</span>
-            <h3>Estética premium e consistente</h3>
+            <span class="chip">Cortes virais</span>
+            <h3>Pack com 500+ cortes para viralizar</h3>
             <ul class="list">
-              <li>Grades, margens e tipografia coesa</li>
-              <li>Paleta otimizada para contraste</li>
-              <li>Mockups e capas 1:1 / 9:16</li>
-            </ul>
-          </div>
-          <div class="card reveal">
-            <span class="chip">Conversão</span>
-            <h3>CTA que pede clique</h3>
-            <ul class="list">
-              <li>Botões preto com borda amarela</li>
-              <li>Setas & brilhos sutis no hover</li>
-              <li>Roteiros de legenda prontos</li>
+              <li>Formatos prontos para Reels/Shorts/TikTok</li>
+              <li>Headlines e CTAs testados</li>
+              <li>Guia para criar sua página de filmes</li>
             </ul>
           </div>
         </div>
 
         <div class="cta-big reveal">
           <div style="position:relative; z-index:2">
-            <h3 style="margin:0 0 6px">Comece hoje com o Pack Viral</h3>
-            <p class="muted" style="margin:0 0 12px">Baixe, edite e publique em minutos. Sem frescura, sem curva de aprendizado.</p>
+            <h3 style="margin:0 0 6px">Tudo por apenas <span class="price">R$ 27</span></h3>
+            <p class="muted" style="margin:0 0 12px">Acesso imediato após o pagamento. Renovação do streaming é <strong>opcional</strong> após o 1º mês.</p>
             <div class="cta">
-              <a class="btn" href="###LINK_DE_COMPRA###">Quero meu acesso</a>
+              <a class="btn" href="###LINK_DE_COMPRA###">Garantir meu acesso</a>
               <a class="btn btn-outline" href="###LINK_WHATSAPP###">Tirar dúvidas no WhatsApp</a>
             </div>
           </div>
@@ -293,67 +184,22 @@
           <div class="step reveal">
             <div class="n">1</div>
             <div>
-              <strong>Compre e receba o link</strong>
-              <p class="muted" style="margin:6px 0 0">Acesso imediato aos arquivos (MP4, PSD/PNG/SVG e modelos de texto).</p>
+              <strong>Pague e receba o acesso</strong>
+              <p class="muted" style="margin:6px 0 0">Link imediato no e-mail/WhatsApp + guia de início.</p>
             </div>
           </div>
           <div class="step reveal">
             <div class="n">2</div>
             <div>
-              <strong>Edite no seu app favorito</strong>
-              <p class="muted" style="margin:6px 0 0">CapCut, Canva ou Premiere — já vem com guias e tamanhos prontos.</p>
+              <strong>Abra o catálogo e publique cortes</strong>
+              <p class="muted" style="margin:6px 0 0">Use os 500+ cortes para atrair audiência e cliques.</p>
             </div>
           </div>
           <div class="step reveal">
             <div class="n">3</div>
             <div>
-              <strong>Publique e acompanhe</strong>
-              <p class="muted" style="margin:6px 0 0">Aplique as legendas e CTAs inclusos e acompanhe o crescimento.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="planos">
-      <div class="wrap">
-        <h2 class="h2 center">Planos</h2>
-        <p class="muted center">Escolha o acesso ideal para você</p>
-        <div class="grid-3" style="margin-top:14px">
-          <div class="card reveal">
-            <h3>Start</h3>
-            <p class="muted">Para começar com segurança</p>
-            <ul class="list">
-              <li>50 artes + 10 animações</li>
-              <li>Legendas base</li>
-              <li>Atualizações mensais</li>
-            </ul>
-            <div class="cta" style="margin-top:10px">
-              <a class="btn" href="###LINK_PLANO_START###">Escolher</a>
-            </div>
-          </div>
-          <div class="card reveal" style="outline:2px solid rgba(255,216,77,.35)">
-            <h3>Pro <span class="chip">Mais vendido</span></h3>
-            <p class="muted">Para escalar com consistência</p>
-            <ul class="list">
-              <li>120 artes + 30 animações</li>
-              <li>Roteiros de CTA e hooks</li>
-              <li>Atualizações quinzenais</li>
-            </ul>
-            <div class="cta" style="margin-top:10px">
-              <a class="btn" href="###LINK_PLANO_PRO###">Escolher</a>
-            </div>
-          </div>
-          <div class="card reveal">
-            <h3>Studio</h3>
-            <p class="muted">Para times e agências</p>
-            <ul class="list">
-              <li>+200 artes + 60 animações</li>
-              <li>Licença comercial ampliada</li>
-              <li>Suporte prioritário</li>
-            </ul>
-            <div class="cta" style="margin-top:10px">
-              <a class="btn" href="###LINK_PLANO_STUDIO###">Escolher</a>
+              <strong>Renove se quiser continuar o streaming</strong>
+              <p class="muted" style="margin:6px 0 0">O mês incluso é suficiente para validar e escalar.</p>
             </div>
           </div>
         </div>
@@ -365,16 +211,16 @@
         <h2 class="h2">Dúvidas frequentes</h2>
         <div class="reveal" style="display:grid; gap:10px; margin-top:10px">
           <details>
-            <summary>Posso usar comercialmente?</summary>
-            <p>Sim. O pack inclui licença para uso em perfis comerciais e venda de serviços de social media. Não é permitido revender o pack como produto digital.</p>
+            <summary>O que é o valor de R$ 27,00?</summary>
+            <p>É um pacote único que inclui 1 mês de acesso a filmes/séries/canais de TV (30k+ conteúdos) e um pack com 500+ cortes virais.</p>
           </details>
           <details>
-            <summary>Como recebo as atualizações?</summary>
-            <p>Enviamos por e-mail e WhatsApp sempre que sair lote novo de templates.</p>
+            <summary>Preciso renovar depois do 1º mês?</summary>
+            <p>Renovar o streaming é opcional. O pack de cortes continua seu para sempre.</p>
           </details>
           <details>
-            <summary>Funciona no CapCut / Canva?</summary>
-            <p>Sim. Incluímos arquivos e guias para CapCut, Canva e Premiere. Basta substituir textos e logotipo.</p>
+            <summary>Posso usar os cortes comercialmente?</summary>
+            <p>Sim, você pode usar nos seus perfis e para vender serviços de social media. Não é permitido revender o pack como produto digital.</p>
           </details>
         </div>
       </div>
@@ -384,7 +230,7 @@
   <div class="toast" id="toast">
     <div class="badge-ig" aria-hidden="true"></div>
     <div>
-      <strong id="t-name">###Nome###</strong> acabou de baixar o <strong>Pack Viral</strong> 🔥
+      <strong id="t-name">###Nome###</strong> acabou de garantir por <strong>R$ 27</strong> 🔥
       <div class="muted" style="font-size:.82rem">iPhone • Instagram</div>
     </div>
   </div>
@@ -406,7 +252,7 @@
     },{threshold:.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // Toasts de prova social
+    // Toasts (prova social)
     const nomes = ["Larissa", "Gustavo", "Ana Paula", "Marcos", "Julia", "Felipe", "Bruna", "Thiago"];
     const t = document.getElementById('toast');
     function showToast(){
@@ -418,7 +264,7 @@
     setTimeout(showToast, 2200);
     setInterval(showToast, 11000);
 
-    // Parallax/tilt sutil no mockup
+    // Tilt sutil no mockup
     const media = document.querySelector('.hero-media');
     media?.addEventListener('pointermove', (e)=>{
       const r = media.getBoundingClientRect();
